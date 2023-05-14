@@ -1,41 +1,63 @@
-//algoritmo con condicional
-let edad = 20;
-let nacionalidad = "argentina";
+let inventario = {
+    pokeballs: 5,
+    superballs: 3,
+    ultraballs: 1
+};
 
-if (edad >= 18 && nacionalidad === "argentina") {
-    console.log("Eres mayor de edad y tienes la nacionalidad argentina");
-}
-else if (edad >= 18 && nacionalidad !== "argentina") {
-    console.log("Eres mayor de edad pero no tienes la nacionalidad argentina");
-}
-else {
-    console.log("Eres menor de edad");
-}
+const precios = {
+    pokeball: 200,
+    superball: 600,
+    ultraball: 1200
+};
 
+alert(`Bienvenido a la tienda Pokémon. Actualmente tienes:\n- ${inventario.pokeballs} pokeballs\n- ${inventario.superballs} superballs\n- ${inventario.ultraballs} ultraballs`);
 
+let opcion = prompt("¿Qué tipo de pokeball deseas comprar? (pokeball / superball / ultraball)");
 
-//algoritmo con ciclo
-let numero = 1;
-let resultado = 0;
-
-while (numero <= 10) {
-    if (numero % 2 === 0) {
-        resultado += numero;
+if (opcion === "pokeball") {
+    let cantidad = prompt("¿Cuántas pokeballs quieres comprar?");
+    let total = cantidad * precios.pokeball;
+    if (total > 0 && total <= 2000) {
+        if (confirm(`¿Estás seguro que quieres comprar ${cantidad} pokeballs por ${total} monedas?`)) {
+            inventario.pokeballs += Number(cantidad);
+            alert(`¡Has comprado ${cantidad} pokeballs!`);
+        } else {
+            alert("Compra cancelada.");
+        }
+    } else {
+        alert("Cantidad o monto inválido. La cantidad máxima es 10 pokeballs.");
     }
-    numero++;
+} else if (opcion === "superball") {
+    let cantidad = prompt("¿Cuántas superballs quieres comprar?");
+    let total = cantidad * precios.superball;
+    if (total > 0 && total <= 1800) {
+        if (confirm(`¿Estás seguro que quieres comprar ${cantidad} superballs por ${total} monedas?`)) {
+            inventario.superballs += Number(cantidad);
+            alert(`¡Has comprado ${cantidad} superballs!`);
+        } else {
+            alert("Compra cancelada.");
+        }
+    } else {
+        alert("Cantidad o monto inválido. La cantidad máxima es 3 superballs.");
+    }
+} else if (opcion === "ultraball") {
+    let cantidad = prompt("¿Cuántas ultraballs quieres comprar?");
+    let total = cantidad * precios.ultraball;
+    if (total > 0 && total <= 1200) {
+        if (confirm(`¿Estás seguro que quieres comprar ${cantidad} ultraballs por ${total} monedas?`)) {
+            inventario.ultraballs += Number(cantidad);
+            alert(`¡Has comprado ${cantidad} ultraballs!`);
+        } else {
+            alert("Compra cancelada.");
+        }
+    } else {
+        alert("Cantidad o monto inválido. La cantidad máxima es 1 ultraball.");
+    }
+} else {
+    alert("Opción inválida.");
 }
 
-console.log("La suma de todos los resultados es: " + resultado);
-
-
-
-//simulador interactivo
-let nombrePokemon = prompt('Ingresa el nombre del Pokémon');
-let tipoPokemon = prompt('Ingresa el tipo del Pokémon');
-let nivelPokemon = Number(prompt('Ingresa el nivel del Pokémon'));
-
-alert(`¡Has capturado a un ${nombrePokemon} de tipo ${tipoPokemon} y nivel ${nivelPokemon}!`);
-
+alert(`Ahora tienes:\n- ${inventario.pokeballs} pokeballs\n- ${inventario.superballs} superballs\n- ${inventario.ultraballs} ultraballs`);
 
 
 
